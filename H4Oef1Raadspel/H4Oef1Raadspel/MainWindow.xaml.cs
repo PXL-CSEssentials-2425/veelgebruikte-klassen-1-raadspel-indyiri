@@ -19,6 +19,7 @@ namespace H4Oef1Raadspel
         public MainWindow()
         {
             InitializeComponent();
+            randomNumber = rnd.Next(1, 101);
         }
 
         Random rnd = new Random();
@@ -37,6 +38,7 @@ namespace H4Oef1Raadspel
             numberTextBox.Focus();
             output1TextBox.Clear();
             output2TextBox.Clear();
+            amountOfGuesses = 0;
         }
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
@@ -60,13 +62,15 @@ namespace H4Oef1Raadspel
                         output1TextBox.Text = "Proficiat! U hebt het getal geraden";
                     }
                     amountOfGuesses++;
-                    output2TextBox.Text = $"Aantal keer geraden: {amountOfGuesses}";                
+                    output2TextBox.Text = $"Aantal keer geraden: {amountOfGuesses}";    
+                    numberTextBox.Focus();
             }
             else
             {
                 output1TextBox.Text = "Geef een getal in tussen 1 en 100";
                 output2TextBox.Text = "Geef een getal in tussen 1 en 100";
-                numberTextBox.Focus();               
+                numberTextBox.Focus();
+                numberTextBox.Clear();                
             }
         }      
     }
